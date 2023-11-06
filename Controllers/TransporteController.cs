@@ -2,70 +2,70 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIEstudiantes.Controllers;
+namespace APITransporte.Controllers;
 
 [ApiController]
-[Route("api/estudiante")]
+[Route("transporte")]
 public class TransporteController : ControllerBase
 {
-    public static List<Estudiante> estudiantes = new List<Estudiante>() { };
+    public static List<Transporte> transportes = new List<Transporte>() { };
 
-    private readonly ILogger<EstudiantesController> _logger;
+    private readonly ILogger<TransporteController> _logger;
 
-    public EstudiantesController(ILogger<EstudiantesController> logger)
+    public TransporteController(ILogger<TransporteController> logger)
     {
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetEstudiantes")]
-    public IEnumerable<Estudiante> Get()
+    [HttpGet(Name = "GetTransportes")]
+    public IEnumerable<Transporte> Get()
     {
-        return estudiantes;
+        return transportes;
     }
 
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<Estudiante> Get(int id)
+    public ActionResult<Transporte> Get(int id)
     {
-        int estudianteIndex = estudiantes.FindIndex(r => r.Id == id);
-        if (estudianteIndex < 0)
+        int transporteIndex = transportes.FindIndex(r => r.Id == id);
+        if (transporteIndex < 0)
         {
             return NotFound();
         }
-        return estudiantes[estudianteIndex];
+        return transportes[transporteIndex];
     }
 
 
-    [HttpPost(Name = "PostEstudiantes")]
-    public void Post(Estudiante estudiante)
+    [HttpPost(Name = "PostTransportes")]
+    public void Post(Transporte transporte)
     {
-        estudiante.Id = 1;
-        if (estudiantes.Count > 0)
-            estudiante.Id = estudiantes.Max(r => r.Id) + 1;
-        estudiantes.Add(estudiante);
+        transporte.Id = 1;
+        if (transportes.Count > 0)
+            transporte.Id = transportes.Max(r => r.Id) + 1;
+        transportes.Add(transporte);
     }
 
-    [HttpPut("{id}",Name = "PutEstudiantes")]
-    public ActionResult Put(int id, Estudiante estudiante)
+    [HttpPut("{id}",Name = "PutTransportes")]
+    public ActionResult Put(int id, Transporte transporte)
     {
-        int estudianteIndex = estudiantes.FindIndex(r => r.Id == id);
-        if (estudianteIndex < 0)
+        int transporteIndex = transportes.FindIndex(r => r.Id == id);
+        if (transporteIndex < 0)
         {
             return NotFound();
         }
-        estudiantes[estudianteIndex] = estudiante;
+        transportes[transporteIndex] = transporte;
         return new EmptyResult();
     }
-    [HttpDelete("{id}",Name = "DeleteEstudiantes")]
+    [HttpDelete("{id}",Name = "DeleteTransportes")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult Delete(int id)
     {
-        int estudianteIndex = estudiantes.FindIndex(r => r.Id == id);
-        if (estudianteIndex < 0)
+        int transporteIndex = transportes.FindIndex(r => r.Id == id);
+        if (transporteIndex < 0)
         {
             return NotFound();
         }
-        estudiantes.RemoveAt(estudianteIndex);
+        transportes.RemoveAt(transporteIndex);
         return new EmptyResult();
     }
 }
