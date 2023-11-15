@@ -2,17 +2,22 @@ const mongoose =require('../config/mongodb')
 
 const reservasSchema = mongoose.Schema ({  
  
-  
+  id: {
+    type: Number,
+    unique: true,
+    required: true,
+  },
+
     transporte_id: 
     {
-      type: mongoose.Schema.Types.ObjectId
+      type: Number
       
 
     },
 
     cliente_id:
     {
-      type: mongoose.Schema.Types.ObjectId
+      type: Number
       
       
     },
@@ -43,6 +48,6 @@ const reservasSchema = mongoose.Schema ({
     }
      
 
-})
+}, { collection: "reservasTransportes" })
 
-module.exports = mongoose.model("reservasTransportes", reservasSchema,'ReservaTransporte')
+module.exports = mongoose.model("ReservaTransporte", reservasSchema)

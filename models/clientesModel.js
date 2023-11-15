@@ -41,6 +41,6 @@ const clientesSchema = mongoose.Schema ({
     
     
 
-})
+}, { collection: "clientes" })
 
-module.exports = mongoose.model("clientes", clientesSchema,'Cliente')
+module.exports = mongoose.model("Cliente", clientesSchema)

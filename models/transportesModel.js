@@ -1,15 +1,19 @@
 const mongoose =require('../config/mongodb')
-const AutoIncrement = require('mongoose-sequence')(mongoose);
+
 
 
 const transportesSchema = mongoose.Schema ({  
  
-    
+  id: {
+    type: Number,
+    unique: true,
+    required: true,
+  },
     tipo: 
     {
       type:String,
       required: [true,"El campo es obligatorio"],
-      minlength:3
+      minLength:3
 
     },
 
@@ -34,13 +38,14 @@ const transportesSchema = mongoose.Schema ({
     },
     proveedor_id: 
     {
-      type: mongoose.Schema.Types.ObjectId,
-      
-     
+      type: Number,
+          
            
     }
+   
      
 
-})
-transportesSchema.plugin(AutoIncrement, { inc_field: 'id' })
-module.exports = mongoose.model("transportes", transportesSchema,'Transporte')
+}, { collection: "transportes" })
+
+
+module.exports = mongoose.model("Transporte", transportesSchema)

@@ -1,7 +1,7 @@
 
 const transportesModel = require("../models/transportesModel")
 
-
+const countersmodel = require("../models/countersModel")
 
 module.exports = 
 {
@@ -52,9 +52,27 @@ module.exports =
    {
     try
     {
+      const counter = await countersmodel.findOneAndUpdate(
+        { id: "autoval" },
+        { $inc: { seqTransporte: 1 } },
+        { new: true }
+      );
+  
+      let seqId;
+      if (!counter) {
+       
+        const newval = new countersmodel({ id: "autoval", seqTransporte: 1 });
+        await newval.save();
+        seqId = 1;
+      } else {
+        seqId = counter.seqTransporte;
+      }    
+    
+     
           console.log(req.body)
-          const document = new transportesModel(
-          {           
+          const nuevoTransporte = new transportesModel(
+          { 
+            id: seqId,       
             tipo:req.body.tipo,
             descripcion:req.body.descripcion,
             capacidad:req.body.capacidad,
@@ -62,16 +80,15 @@ module.exports =
             proveedor_id:req.body.proveedor_id
            
           })
-          const transporte = await document.save()
+          const transporte = await nuevoTransporte.save()
           res.status(201).json(transporte)
+     }
+      catch (error) {
+        console.error(error);
+    
+       
+        next(error);
       }
-
-    catch(e)
-    {
-      console.log(e)
-      e.status=400;
-      next(e)
-    }  
       
   },
 
@@ -79,7 +96,8 @@ module.exports =
   {
     try
     {
-        const update = await transportesModel.updateOne({_id:req.params.transporteId},req.body)     
+      const idTransporte= parseInt(req.params.transporteId);
+        const update = await transportesModel.updateOne({id:idTransporte},req.body)     
         res.status(200).json(update); 
               
 
@@ -98,9 +116,9 @@ module.exports =
   {
     try
     {
-         
+      const idTransporte = parseInt(req.params.transporteId);   
      
-      const deleteResponse = await transportesModel.deleteOne({_id:req.params.transporteId})      
+      const deleteResponse = await transportesModel.deleteOne({id:idTransporte})      
       res.status(200).json(deleteResponse); 
     }
 
