@@ -1,5 +1,4 @@
 const reservasTransporteModel = require("../models/reservasTransportesModel");
-const clientesModel = require("../models/clientesModel");
 
 module.exports = 
 {
