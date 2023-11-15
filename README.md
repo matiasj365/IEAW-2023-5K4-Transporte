@@ -6,7 +6,7 @@
     - GET/POST /reservas-transporte
     - GET /clientes/{id_cliente}/reservas-transporte
 - Modelo:   
-![Alt text](transporte_model.png)
+
 -  Relación con otro microservicio:
     - Integración de Aplicaciones en Entorno Web
     - Se relaciona con la Gestión de Clientes al recibir y gestionar las reservas realizadas por los clientes
