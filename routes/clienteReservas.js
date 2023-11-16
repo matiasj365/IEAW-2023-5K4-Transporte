@@ -30,14 +30,26 @@ var clientesController = require ('../controllers/clienteReservasController');
  *         description: Operación exitosa. Devuelve las reservas del cliente con el ID proporcionado.
  *         content:
  *           application/json:
- *             example:                
- *                 id: 1
- *                 transporte_id: 1
- *                 cliente_id: 1
- *                 fecha_inicio: "2023-05-01"
- *                 fecha_fin: "2023-05-02"
- *                 precio_total: 100
- *                 estado: "Pendiente"
+ *             example:
+ *               reservas:
+ *                   [{id: 1,
+ *                   transporte_id: 1,
+ *                   cliente_id: 1,
+ *                   fecha_inicio: "2023-05-01",
+ *                   fecha_fin: "2023-05-02",
+ *                   precio_total: 100,
+ *                   estado: "Pendiente"},
+ *                    {id: 2,
+ *                   transporte_id: 1,
+ *                   cliente_id: 1,
+ *                   fecha_inicio: "2023-05-01",
+ *                   fecha_fin: "2023-05-02",
+ *                   precio_total: 100,
+ *                   estado: "Pendiente"}]
+ *               cliente:
+ *                  id: 1,
+ *                  apellido: Perez,
+ *                  nombre: Juan
  *       '404':
  *         description: No se encontró la/s reserva/s del cliente con el ID proporcionado.
  *         content:

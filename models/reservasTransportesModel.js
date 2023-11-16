@@ -1,52 +1,52 @@
-const mongoose =require('../config/mongodb')
+const mongoose = require('../config/mongodb')
 
-const reservasSchema = mongoose.Schema ({  
- 
+const reservasSchema = mongoose.Schema({
+
   id: {
     type: Number,
     unique: true,
     required: true,
   },
 
-    transporte_id: 
-    {
-      type: Number
-      
+  transporte_id:
+  {
+    type: Number
 
-    },
 
-    cliente_id:
-    {
-      type: Number
-      
-      
-    },
-    fecha_inicio: 
-    {
-      type: Date
-     
-      
-    },
-    fecha_fin: 
-    {
-      type:Date
-      
-      
-    },
+  },
 
-    precio_total: 
-    {
-      type:Number
-      
-      
-    },
-    estado: 
-    {
+  cliente_id:
+  {
+    type: Number
+
+
+  },
+  fecha_inicio:
+  {
+    type: Date
+
+
+  },
+  fecha_fin:
+  {
+    type: Date
+
+
+  },
+
+  precio_total:
+  {
+    type: Number
+
+
+  },
+  estado:
+  {
     type: String
-     
-      
-    }
-     
+
+
+  }
+
 
 }, { collection: "reservasTransportes" })
 
