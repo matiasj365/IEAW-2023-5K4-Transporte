@@ -23,6 +23,9 @@ dependencies:
   express:
     specifier: ~4.16.1
     version: 4.16.4
+  express-oauth2-jwt-bearer:
+    specifier: ^1.6.0
+    version: 1.6.0
   http-errors:
     specifier: ~1.6.3
     version: 1.6.3
@@ -316,6 +319,13 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /express-oauth2-jwt-bearer@1.6.0:
+    resolution: {integrity: sha512-HXnez7vocYlOqlfF3ozPcf/WE3zxT7zfUNfeg5FHJnvNwhBYlNXiPOvuCtBalis8xcigvwtInzEKhBuH87+9ug==}
+    engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0 || ^18.12.0 || ^20.2.0}
+    dependencies:
+      jose: 4.15.4
+    dev: false
+
   /express@4.16.4:
     resolution: {integrity: sha512-j12Uuyb4FMrd/qQAm6uCHAkPtO8FDTRJZBDd5D2KOL2eLaz1yUNdUB/NOIyq0iU4q4cFarsUCrnFDPBcnksuOg==}
     engines: {node: '>= 0.10.0'}
@@ -446,6 +456,10 @@ packages:
   /ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
+    dev: false
+
+  /jose@4.15.4:
+    resolution: {integrity: sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==}
     dev: false
 
   /js-yaml@4.1.0:
