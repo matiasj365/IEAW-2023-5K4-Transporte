@@ -9,7 +9,7 @@
     - /docs/
     - /docs/swagger.json
 - Modelo:   
-
+![Alt text](imgs/transporte_model.png)
 -  Relación con otro microservicio:
     - Integración de Aplicaciones en Entorno Web
     - Se relaciona con la Gestión de Clientes al recibir y gestionar las reservas realizadas por los clientes
