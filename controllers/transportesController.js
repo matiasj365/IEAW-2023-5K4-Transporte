@@ -84,9 +84,7 @@ module.exports =
           res.status(201).json(transporte)
      }
       catch (error) {
-        console.error(error);
-    
-       
+        console.error(error);      
         next(error);
       }
       
