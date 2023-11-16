@@ -2,7 +2,7 @@ const express = require ('express');
 const clientes = express.Router();
 
 var clientesController = require ('../controllers/clienteReservasController'); 
-
+const { requiredScopes } = require("express-oauth2-jwt-bearer");
 
 /**
  * @swagger
@@ -57,7 +57,7 @@ var clientesController = require ('../controllers/clienteReservasController');
  *             example:
  *               error: "No se encontró la/s reserva/s del cliente con el ID proporcionado."
  */
-clientes.get('/:cliente_id/reservas-transporte', clientesController.getById);
+clientes.get('/:cliente_id/reservas-transporte',requiredScopes("read:reservas"), clientesController.getById);
 
 
 module.exports = clientes;
