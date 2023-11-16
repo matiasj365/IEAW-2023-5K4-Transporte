@@ -26,7 +26,7 @@ const transportesSchema = mongoose.Schema ({
     {
       type: Number,
       required: [true,"El campo es obligatorio"],
-      min:[0,"El codigo debe ser mayor a 0"]
+      min:[0,"La capacidad debe ser mayor a 0"]
       
     },
     precio_base: 

@@ -1,7 +1,9 @@
 const express = require ('express');
 const transportes = express.Router();
+const transportesController = require ('../controllers/transportesController'); 
+const { requiredScopes } = require("express-oauth2-jwt-bearer");
 
-var transportesController = require ('../controllers/transportesController'); 
+
 
 /**
  * @swagger
@@ -78,7 +80,7 @@ var transportesController = require ('../controllers/transportesController');
  
  */
 
-transportes.get('/',transportesController.getAll);
+transportes.get('/',requiredScopes("read:transportes"), transportesController.getAll);
 
 /**
  * @swagger
@@ -116,7 +118,7 @@ transportes.get('/',transportesController.getAll);
  */
 
 
-transportes.get('/:transporteId', transportesController.getById);
+transportes.get('/:transporteId',requiredScopes("read:transportes"), transportesController.getById);
 
 
 /**
@@ -158,7 +160,7 @@ transportes.get('/:transporteId', transportesController.getById);
  */
 
 
-transportes.post('/',transportesController.create);
+transportes.post('/',requiredScopes("write:transportes"),transportesController.create);
 
 /**
  * @swagger
@@ -202,7 +204,7 @@ transportes.post('/',transportesController.create);
  *
 */
 
-transportes.put('/:transporteId',transportesController.update);
+transportes.put('/:transporteId',requiredScopes("write:transportes"),transportesController.update);
 
 /**
  * @swagger
@@ -232,7 +234,7 @@ transportes.put('/:transporteId',transportesController.update);
 
 
 
-transportes.delete('/:transporteId',transportesController.delete);
+transportes.delete('/:transporteId',requiredScopes("write:transportes"),transportesController.delete);
 
 
 module.exports = transportes;
