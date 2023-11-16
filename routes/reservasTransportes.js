@@ -1,7 +1,8 @@
 const express = require ('express');
 const reservas = express.Router();
 
-var reservasTransportesController = require ('../controllers/reservasTransportesController'); 
+const reservasTransportesController = require ('../controllers/reservasTransportesController'); 
+const { requiredScopes } = require("express-oauth2-jwt-bearer");
 
 /**
  * @swagger
@@ -77,7 +78,7 @@ var reservasTransportesController = require ('../controllers/reservasTransportes
  */
 
 
-reservas.get('/',reservasTransportesController.getAll);
+reservas.get('/', requiredScopes("read:reservas"),reservasTransportesController.getAll);
 
 
 
@@ -116,7 +117,7 @@ reservas.get('/',reservasTransportesController.getAll);
  *               error: "Reserva no encontrada"
  */
 
-reservas.get('/:reservaTransporteId', reservasTransportesController.getById);
+reservas.get('/:reservaTransporteId', requiredScopes("read:reservas"),reservasTransportesController.getById);
 
 /**
  * @swagger
@@ -156,6 +157,6 @@ reservas.get('/:reservaTransporteId', reservasTransportesController.getById);
  *             example:
  *               error: "Datos de la reserva incompletos o incorrectos"
  */
-reservas.post('/',reservasTransportesController.create);
+reservas.post('/',requiredScopes("write:reservas"),reservasTransportesController.create);
 
 module.exports = reservas;

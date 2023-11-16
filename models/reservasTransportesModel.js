@@ -23,20 +23,30 @@ const reservasSchema = mongoose.Schema({
   },
   fecha_inicio:
   {
-    type: Date
-
+    type: Date,
+    required: true,
+    validate: {
+      validator: function(value) {
+       
+        return value < this.fecha_fin;
+      },
+      message: 'La fecha de inicio debe ser anterior a la fecha de fin.'
+    }
+  
 
   },
   fecha_fin:
   {
     type: Date
+    ,required: true
 
 
   },
 
   precio_total:
   {
-    type: Number
+    type: Number,
+    min:[0,"El precio debe ser mayor a 0"]
 
 
   },
