@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj": {}
+    "/home/matias.jarab/03-Facu/IEAW-2023-5K4/IEAW-2023-5K4-Transporte/APITransporte.csproj": {}
   },
   "projects": {
-    "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj": {
+    "/home/matias.jarab/03-Facu/IEAW-2023-5K4/IEAW-2023-5K4-Transporte/APITransporte.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj",
+        "projectUniqueName": "/home/matias.jarab/03-Facu/IEAW-2023-5K4/IEAW-2023-5K4-Transporte/APITransporte.csproj",
         "projectName": "APITransporte",
-        "projectPath": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj",
+        "projectPath": "/home/matias.jarab/03-Facu/IEAW-2023-5K4/IEAW-2023-5K4-Transporte/APITransporte.csproj",
         "packagesPath": "/home/matias.jarab/.nuget/packages/",
-        "outputPath": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/obj/",
+        "outputPath": "/home/matias.jarab/03-Facu/IEAW-2023-5K4/IEAW-2023-5K4-Transporte/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/matias.jarab/.nuget/NuGet/NuGet.Config"
@@ -49,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -61,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.124/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/230/sdk/6.0.417/RuntimeIdentifierGraph.json"
         }
       }
     }
