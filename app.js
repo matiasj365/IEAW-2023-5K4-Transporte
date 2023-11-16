@@ -4,25 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-//swagger
-const swaggerUI = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
-
-const swaggerSpec = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "IAEW-5K4-2023 API Grupo 3 Gestion de transporte",
-      version: "1.0.0",
-    },
-    servers: [
-     {  url:"http://localhost:5000" 
-     }
-    ]
-  },
-  apis : [ `${path.join(__dirname,'./routes/*.js')}`]
-
-}
 
 var app = express();
 app.use(express.json());
@@ -40,8 +21,37 @@ app.use('/api/reservas-transporte',routerReservas);
 const routerClientes = require ('./routes/clienteReservas');
 app.use('/api/clientes/',routerClientes);
 
+//swagger
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
-app.use("/api-transportes-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsdoc(swaggerSpec))); 
+const swaggerSpec = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "IAEW-5K4-2023 API Grupo 3 Gestion de transporte",
+      version: "1.0.0",
+    },
+    servers: [
+     {  url:"http://localhost:5000" 
+     }
+    ]
+    ,
+    url: "/docs/swagger.json",
+  },
+  apis : [ `${path.join(__dirname,'./routes/*.js')}`]
+
+}
+
+const specs = swaggerJsdoc(swaggerSpec);
+
+app.use("/docs", swaggerUI.serve);
+app.get("/docs", swaggerUI.setup(null, {
+    swaggerOptions: {
+        url: "/docs/swagger.json",
+    },
+}));
+app.get("/docs/swagger.json", (req, res) => res.json(specs));
 
 
 // view engine setup

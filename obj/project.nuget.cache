@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "BxLnx7CRhC9V7pcYgbgooVMpxZUiy2vUkP5Le9MZqjIuC9y2gWf0LPbzOshqdAYN1ls0/2AANnrejV+mAZ0REA==",
+  "success": true,
+  "projectFilePath": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj",
+  "expectedPackageFiles": [
+    "/home/matias.jarab/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/matias.jarab/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/matias.jarab/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/home/matias.jarab/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/home/matias.jarab/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/home/matias.jarab/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

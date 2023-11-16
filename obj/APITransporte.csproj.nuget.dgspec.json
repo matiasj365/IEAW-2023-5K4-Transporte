@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj": {}
+  },
+  "projects": {
+    "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj",
+        "projectName": "APITransporte",
+        "projectPath": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/APITransporte.csproj",
+        "packagesPath": "/home/matias.jarab/.nuget/packages/",
+        "outputPath": "/home/matias.jarab/02-Facu/5K4-2023-IEAW/IEAW-2023-5K4-Transporte/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/matias.jarab/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.124/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
