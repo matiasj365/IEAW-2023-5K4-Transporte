@@ -1,5 +1,5 @@
 const axios = require('axios');
-
+const consultarApiProveedores = process.env.CONSULTAR_API_PROVEEDORES === 'true';
 // URL de la API de clientes
 const proveedoresApiUrl = process.env.PROVEEDORES_API_URL;
 // Configuración de Auth0
@@ -27,6 +27,8 @@ async function getAuth0Token() {
 
 async function getProveedorData(proveedorId) {
   try {
+    if(!consultarApiProveedores)
+      return null;
     const token = await getAuth0Token();
     // Realizar solicitud a la API de clientes
     console.log(`Consultando API Proveedores - proveedorId: ${proveedorId}`);
@@ -35,6 +37,7 @@ async function getProveedorData(proveedorId) {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(`Proveedor: ${JSON.stringify(proveedorResponse.data, null, 2)}`);
     return proveedorResponse.data;
   } catch (error) {
     if (error.response && error.response.status === 404) {

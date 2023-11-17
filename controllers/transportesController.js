@@ -1,4 +1,4 @@
-
+const consultarApiProveedores = process.env.CONSULTAR_API_PROVEEDORES === 'true';
 const transportesModel = require("../models/transportesModel")
 
 const countersmodel = require("../models/countersModel")
@@ -16,7 +16,8 @@ module.exports =
         documents.map(async (documento) => {
           // Buscar datos del proveedor utilizando el servicio proveedoresService
           const proveedor = await proveedoresService.getProveedorData(documento.proveedor_id);
-
+          if (proveedor == null)
+            return documento;
           // Combinar datos del proveedor con los datos del transporte
           return {
             ...documento, // Si usas Mongoose, convierte el documento a un objeto JS
@@ -47,14 +48,19 @@ module.exports =
       console.log(document);
       //Buscamos el proveedor y agregamos sus datos en la respuesta
       const proveedor = await proveedoresService.getProveedorData(document.proveedor_id)
-      // Combinamos los datos del proveedor con los datos del transporte
-      const transporteConProveedor = {
-        ...document, // Convierte el documento de Mongoose a un objeto JS
-        proveedor: proveedor,
-      };
       res.set('Content-Type', 'application/json')
-      //res.status(200).send(JSON.stringify(document, null, 2));
-      res.status(200).json(transporteConProveedor);
+      if (proveedor == null)
+        res.status(200).send(JSON.stringify(document, null, 2));
+      // Combinamos los datos del proveedor con los datos del transporte
+      else {
+        const transporteConProveedor = {
+          ...document, // Convierte el documento de Mongoose a un objeto JS
+          proveedor: proveedor,
+        };
+        res.status(200).json(transporteConProveedor);
+      }
+
+
     }
 
     catch (e) {
@@ -99,7 +105,7 @@ module.exports =
       //Verificamos si el proveedor existe
       const proveedor = await proveedoresService.getProveedorData(req.body.proveedor_id)
 
-      if (!proveedor) {
+      if (!proveedor && consultarApiProveedores) {
         return res.status(404).json({ error: 'Proveedor no encontrado' });
       }
 
@@ -119,7 +125,7 @@ module.exports =
 
       //Verificamos si el proveedor existe
       const proveedor = await proveedoresService.getProveedorData(req.body.proveedor_id)
-      if (!proveedor) {
+      if (!proveedor && consultarApiProveedores) {
         return res.status(404).json({ error: 'Proveedor no encontrado' });
       }
 
