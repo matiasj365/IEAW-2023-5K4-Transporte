@@ -6,3 +6,6 @@ node_modules/
 
 # Ignorar archivos generados automáticamente
 .DS_Store
+.vscode
+obj
+Debug

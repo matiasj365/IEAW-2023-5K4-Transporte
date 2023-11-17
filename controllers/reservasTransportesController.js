@@ -1,26 +1,6 @@
-const axios = require('axios'); // o 'node-fetch' si estás usando esa biblioteca
 const reservasTransporteModel = require("../models/reservasTransportesModel");
 const countersmodel = require("../models/countersModel")
-
-const clienteApiUrl = 'https://9b621a6b-829a-47d3-8459-38c7e299dfb4.mock.pstmn.io';
-
-// Función para verificar la existencia del cliente
-async function verificarExistenciaCliente(clienteId) {
-  try {
-    const response = await axios.get(`${clienteApiUrl}/clientes/${clienteId}`);
-    return response.data; 
-  } catch (error) {
-    if (error.response && error.response.status === 404) {
-      // Cliente no encontrado
-      return null;
-    } else {
-      // Ocurrió un error diferente
-      throw error;
-    }
-  }
-}
-
-
+const clientesService = require('../services/clientesServices');
 module.exports =
 {
 
@@ -94,7 +74,7 @@ module.exports =
       const clienteId = nuevaReserva.cliente_id; // Asume que el ID del cliente está en el cuerpo de la solicitud
 
       // Verificar la existencia del cliente
-      const cliente = await verificarExistenciaCliente(clienteId);
+      const cliente = await clientesService.getClientData(clienteId);
 
       if (!cliente) {
         return res.status(404).json({ error: 'Cliente no encontrado' });
@@ -111,6 +91,4 @@ module.exports =
     }
 
   },
-
-
 }
