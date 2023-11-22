@@ -2,7 +2,8 @@
 version: '3.1'
 
 services:
-  ieaw_mongo:
+  ieaw_mongodb:
+    container_name: ieaw_mongodb
     image: mongo
     restart: always
     ports:
@@ -12,14 +13,38 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ieaw2023! 
     volumes: 
       - ieaw_mongodb_volume:/data/db
+    networks:
+      - api-transportes-net
   ieaw_mongo-express:
+    container_name: ieaw_mongo-express
     image: mongo-express
     restart: always
     ports:
       - 8081:8081
+    networks:
+     - api-transportes-net  
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: ieaw2023!
-      ME_CONFIG_MONGODB_URL: mongodb://root:ieaw2023!@ieaw_mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://root:ieaw2023!@ieaw_mongodb:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin-transportes
+      ME_CONFIG_BASICAUTH_PASSWORD: admin-iewa2023!
+  ieaw_api_transportes:
+    container_name: ieaw_api_transportes
+    build: 
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    command: pnpm start
+    #volumes:
+      #- ..:/usr/app/
+      #- /usr/app/node_modules
+    ports:
+      - "5000:5000"
+    depends_on:
+      - ieaw_mongodb
+    networks:
+      - api-transportes-net
 volumes:
   ieaw_mongodb_volume:
+networks:
+  api-transportes-net:

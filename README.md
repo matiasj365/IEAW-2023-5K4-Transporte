@@ -33,4 +33,9 @@
 - ClienteId:  
 ```ZscjjfQ1n7HuVzgBvy5Je9oKNIJHAAgo```
 - Cliente Secret:  
-```Te lo contamos en privado```
+```Te lo contamos en privado```  
+ ### Documentación técnica y de diseño de la solución:
+ ## Arquitectura:
+![Alt text](imgs/arquitectura.jpeg)
+## Mensajeria:
+![Alt text](imgs/mensajeria.jpeg)            

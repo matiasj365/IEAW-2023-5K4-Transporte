@@ -7,6 +7,7 @@ const auth0Domain = process.env.OAUTH_CLIENT_ACCESS_URL_CLIENTES;
 const auth0ClientId = process.env.OAUTH_CLIENT_ID_CLIENTES;
 const auth0ClientSecret = process.env.OAUTH_CLIENT_SECRET_CLIENTES;
 const auth0Audience = process.env.OAUTH_CLIENT_AUDIENCE_CLIENTES;
+const consultarApiClientes = process.env.CONSULTAR_API_PROVEEDORES === 'true';
 
 async function getAuth0Token() {
   try {
@@ -27,6 +28,8 @@ async function getAuth0Token() {
 
 async function getClientData(clienteId) {
   try {
+    if(!consultarApiClientes)
+      return null;
     const token = await getAuth0Token();
     // Realizar solicitud a la API de clientes
     console.log(`Consultando API Clientes - clientId: ${clienteId}`);
