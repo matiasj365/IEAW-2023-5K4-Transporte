@@ -1,6 +1,8 @@
 const reservasTransporteModel = require("../models/reservasTransportesModel");
 const countersmodel = require("../models/countersModel")
 const clientesService = require('../services/clientesServices');
+const consultarApiClientes = process.env.CONSULTAR_API_CLIENTES === 'true';
+
 module.exports =
 {
 
@@ -76,7 +78,7 @@ module.exports =
       // Verificar la existencia del cliente
       const cliente = await clientesService.getClientData(clienteId);
 
-      if (!cliente) {
+      if (!cliente && consultarApiClientes) {
         return res.status(404).json({ error: 'Cliente no encontrado' });
       }
 

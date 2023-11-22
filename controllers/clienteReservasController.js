@@ -1,6 +1,7 @@
 const axios = require('axios'); // o 'node-fetch' si estás usando esa biblioteca
 const clientesService = require('../services/clientesServices');
 const reservasTransporteModel = require("../models/reservasTransportesModel");
+const consultarApiClientes = process.env.CONSULTAR_API_CLIENTES === 'true';
 
 module.exports = 
 {
@@ -15,7 +16,7 @@ module.exports =
 
       const cliente = await clientesService.getClientData(idCliente);
 
-      if (!cliente) {
+      if (!cliente && consultarApiClientes) {
         return res.status(404).json({ error: 'Cliente no encontrado' });
       }
 
